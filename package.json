@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "npm run lint:ts",
     "lint:ts": "npm run ng-custom lint",
+    "lint:fix": "npm run lint:ts:fix && npm run lint:prettier:fix",
     "ng-custom": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng",
+    "lint:ts:fix": "npm run ng-custom lint -- --fix",
     "e2e": "ng e2e",
     "lint:prettier": "prettier --list-different \"**/*.*\"",
     "lint:prettier:fix": "prettier --write \"**/*.*\""

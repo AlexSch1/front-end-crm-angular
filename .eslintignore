@@ -1,4 +1,5 @@
 src/assets/
+src/polyfills.ts
 dist/
 node_modules/
 coverage/

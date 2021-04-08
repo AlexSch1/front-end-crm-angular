@@ -1,3 +1,5 @@
+src/polyfills.ts
+.eslintignore
 src/assets/
 dist/
 node_modules/
