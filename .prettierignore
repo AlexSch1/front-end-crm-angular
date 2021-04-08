@@ -2,6 +2,7 @@ src/polyfills.ts
 .eslintignore
 src/assets/
 dist/
+.gitkeep
 node_modules/
 coverage/
 .idea/

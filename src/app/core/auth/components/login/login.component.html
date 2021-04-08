@@ -1,35 +1,63 @@
 <div class="mt-5">
   <form [formGroup]="formGroup" (ngSubmit)="submit()" class="pt-4">
-
-  <mat-card class="example-card mx-auto">
-    <mat-card-header>
-      <mat-card-title>Войти в систему</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-
-
+    <mat-card class="example-card mx-auto">
+      <mat-card-header>
+        <mat-card-title>Войти в систему</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
         <mat-form-field class="col">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" autocomplete="off" type="text" />
+          <input
+            matInput
+            formControlName="email"
+            autocomplete="off"
+            type="text"
+          />
           <mat-error>
-            error
+            <span *ngIf="formGroup.get('email')?.errors?.required">
+              Поле обязательное для заполнения
+            </span>
+            <span *ngIf="formGroup.get('email')?.errors?.email">
+              Не верный email
+            </span>
           </mat-error>
         </mat-form-field>
 
         <mat-form-field class="col">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="password" autocomplete="off" type="text" />
+          <input
+            matInput
+            formControlName="password"
+            autocomplete="off"
+            type="text"
+          />
           <mat-error>
-            error
+            <span *ngIf="formGroup.get('password')?.errors?.required">
+              Поле обязательное для заполнения
+            </span>
+            <span
+              *ngIf="
+                formGroup.get('password')?.errors?.minlength &&
+                formGroup.get('password')?.errors?.minlength?.requiredLength
+              "
+            >
+              Минимальная длинна
+              {{ formGroup.get('password')?.errors?.minlength?.requiredLength }}
+              символов. Сейчас
+              {{ formGroup.get('password').errors?.minlength?.actualLength }}
+            </span>
           </mat-error>
         </mat-form-field>
-
-
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Войти</button>
-    </mat-card-actions>
-  </mat-card>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          type="submit"
+          [disabled]="formGroup.invalid || formGroup.disabled"
+          mat-button
+        >
+          Войти
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </form>
-
 </div>
