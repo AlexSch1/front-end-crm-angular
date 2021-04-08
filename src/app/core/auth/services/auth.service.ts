@@ -21,6 +21,10 @@ export class AuthService {
     );
   }
 
+  public register(user: IUser): Observable<IUser> {
+    return this.http.post<IUser>('api/auth/register', user)
+  }
+
   private setToken(token: string) {
     this.TOKEN = token;
   }
