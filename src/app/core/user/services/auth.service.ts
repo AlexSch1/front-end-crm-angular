@@ -58,6 +58,13 @@ export class AuthService {
     );
   }
 
+
+  public logOut() {
+    // this.setUser(null);
+    this.setToken(null);
+    this.router.navigateByUrl('/login');
+  }
+
   private setUserMap() {
     // this.user = this.user$.asObservable().pipe(
     //   switchMap((user) => {
@@ -99,9 +106,4 @@ export class AuthService {
     // this.user$.next(token);
   }
 
-  private logOut() {
-    // this.setUser(null);
-    this.setToken(null);
-    this.router.navigateByUrl('/login');
-  }
 }

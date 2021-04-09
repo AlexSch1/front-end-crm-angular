@@ -1,0 +1,21 @@
+.sidenav-container {
+  height: 100vh;
+
+  &__sidenav {
+    width: 270px;
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+    }
+  }
+
+  &__content {
+    min-width: 650px;
+  }
+}
+
+.text-white {
+  line-height: initial;
+}

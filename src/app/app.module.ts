@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './feature/auth/auth.module';
 import { TokenInterceptor } from './core/http-interceptors';
+import {BaseLayoutModule} from "./layout/base-layout/base-layout.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { TokenInterceptor } from './core/http-interceptors';
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
+    BaseLayoutModule,
     BrowserAnimationsModule,
   ],
   providers: [

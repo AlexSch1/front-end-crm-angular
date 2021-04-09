@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/user/guards';
+import {BaseLayoutComponent} from "./layout/base-layout/components/base-layout";
 
 const routes: Routes = [
   {
@@ -10,9 +11,16 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: BaseLayoutComponent,
     canActivateChild: [AuthGuard],
     canActivate: [AuthGuard],
-    children: [],
+    children: [
+      {
+        path: 'overview',
+        loadChildren: () =>
+          import('./feature/overview/overview.module').then((m) => m.OverviewModule),
+      },
+    ],
   },
   {
     path: '**',

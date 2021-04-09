@@ -1,0 +1,11 @@
+<ul class="nav nav-pills flex-column mb-auto">
+
+  <li
+    class="nav-item"
+    *ngFor="let link of links"
+  >
+    <a [routerLink]="[link.url]" routerLinkActive="active" class="nav-link text-white">      <mat-icon class="icon mr-2"  aria-hidden="false">{{ link.iconName }}</mat-icon>
+      {{ link.name }}</a>
+  </li>
+  <li class=""></li>
+</ul>
