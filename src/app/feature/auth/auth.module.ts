@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './components/register/register.component';
+import {UserModule} from "../../core/user/user.module";
 
 @NgModule({
   declarations: [LoginComponent, AuthLayoutComponent, RegisterComponent],
@@ -25,6 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
     MatButtonModule,
     MatCardModule,
     AuthRoutingModule,
+    UserModule,
   ],
 })
 export class AuthModule {}

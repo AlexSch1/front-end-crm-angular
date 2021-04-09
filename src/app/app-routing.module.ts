@@ -5,8 +5,16 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./core/auth/auth.module').then((m) => m.AuthModule),
+      import('./feature/auth/auth.module').then((m) => m.AuthModule),
   },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent,
+  // },
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent,
+  // },
   {
     path: '**',
     redirectTo: '',

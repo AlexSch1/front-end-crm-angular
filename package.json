@@ -38,6 +38,7 @@
     "eslint-plugin-jsdoc": "^32.3.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^3.3.1",
+    "ngx-cookie-service": "^11.0.2",
     "prettier": "^2.2.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",

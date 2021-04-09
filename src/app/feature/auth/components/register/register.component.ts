@@ -1,7 +1,7 @@
 import {Component, OnDestroy } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ReplaySubject} from "rxjs";
-import {AuthService} from "../../services";
+import {AuthService} from "../../../../core/user/services";
 import {ActivatedRoute, Router} from "@angular/router";
 import {takeUntil} from "rxjs/operators";
 
