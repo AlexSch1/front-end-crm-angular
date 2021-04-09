@@ -20,6 +20,26 @@ const routes: Routes = [
         loadChildren: () =>
           import('./feature/overview/overview.module').then((m) => m.OverviewModule),
       },
+      {
+        path: 'analytics',
+        loadChildren: () =>
+          import('./feature/analytics/analytics.module').then((m) => m.AnalyticsModule),
+      },
+      {
+        path: 'history',
+        loadChildren: () =>
+          import('./feature/history/history.module').then((m) => m.HistoryModule),
+      },
+      {
+        path: 'order',
+        loadChildren: () =>
+          import('./feature/order/order.module').then((m) => m.OrderModule),
+      },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('./feature/categories/categories.module').then((m) => m.CategoriesModule),
+      },
     ],
   },
   {
