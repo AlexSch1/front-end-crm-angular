@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {first, map, switchMap, tap} from 'rxjs/operators';
-import {CookieService} from "ngx-cookie-service";
-import {Router} from "@angular/router";
-import {AuthCtrlService} from "../../../backend-bridge/auth-ctrl/auth-ctrl.service";
-import {IUser} from "../../../shared/interfacces";
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { first, map, switchMap, tap } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import { AuthCtrlService } from '../../../backend-bridge/auth-ctrl/auth-ctrl.service';
+import { IUser } from '../../../shared/interfacces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   // public user: Observable<any>;
@@ -16,12 +16,16 @@ export class AuthService {
   public token: Observable<any>;
   private token$ = new BehaviorSubject<any>(undefined);
 
-  constructor(private authCtrlService: AuthCtrlService, private cookieService: CookieService, private router: Router) {
+  constructor(
+    private authCtrlService: AuthCtrlService,
+    private cookieService: CookieService,
+    private router: Router,
+  ) {
     this.setUserMap();
   }
 
-  public login(user: IUser): Observable<{ token: string }> {
-    return this.authCtrlService.login(user).pipe(
+  public login(userDto: IUser): Observable<{ token: string }> {
+    return this.authCtrlService.login(userDto).pipe(
       tap((user) => {
         this.setToken(user.token);
         // this.setUser(user.token);
