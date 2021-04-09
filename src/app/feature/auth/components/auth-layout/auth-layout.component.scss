@@ -10,6 +10,9 @@ header {
 
 .auth-link {
   font-size: 16px;
+  &_active {
+    display: none;
+  }
 }
 
 .auth-block {
