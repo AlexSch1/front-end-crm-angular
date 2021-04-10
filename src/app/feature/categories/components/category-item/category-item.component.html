@@ -1,0 +1,71 @@
+<div class="page-title">
+  <h6 class="d-flex align-items-center">
+    <a routerLink="/categories">Категории</a>
+    <mat-icon class="icon" aria-hidden="false">chevron_right</mat-icon>
+
+    {{ isNew ? 'Добавить' : 'Редактировать' }}
+    категорию
+  </h6>
+  <div class="text-right" *ngIf="!isNew">
+    <button (click)="deleteCategory()" mat-fab color="warn">
+      <mat-icon class="icon" aria-hidden="false">delete</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-12 col-md-6">
+    <mat-form-field class="col p-0 mb-3">
+      <mat-label>Название</mat-label>
+      <input matInput formControlName="name" autocomplete="off" type="text" />
+      <mat-error>
+        <span *ngIf="form.get('name').invalid && form.get('name').touched">
+          <span *ngIf="form.get('name')?.errors?.required">
+            Поле обязательное для заполнения
+          </span>
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="mb-3">
+      <input
+        type="file"
+        class="d-none"
+        (change)="onFileUpload($event)"
+        #inpFile
+      />
+      <button
+        type="button"
+        (click)="triggerClick()"
+        [disabled]="form.disabled"
+        class="text-white"
+        mat-raised-button
+        color="accent"
+      >
+        <mat-icon class="icon" aria-hidden="false">cloud_upload</mat-icon>
+        Загрузить изображение
+      </button>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        [disabled]="form.invalid || form.disabled"
+        class="text-white"
+        mat-raised-button
+        color="accent"
+      >
+        Сохранить изменения
+      </button>
+    </div>
+  </form>
+
+  <div class="col-12 col-md-4">
+    <img class="responsive-img" [src]="imagePreview" *ngIf="imagePreview" />
+  </div>
+</div>
+
+<!--<app-positions-form-->
+<!--  *ngIf="category?._id"-->
+<!--  [categoryId]="category._id"-->
+<!--&gt;</app-positions-form>-->

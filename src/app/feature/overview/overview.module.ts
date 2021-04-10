@@ -4,12 +4,8 @@ import { CommonModule } from '@angular/common';
 import { OverviewRoutingModule } from './overview-routing.module';
 import { OverviewComponent } from './components/overview/overview.component';
 
-
 @NgModule({
   declarations: [OverviewComponent],
-  imports: [
-    CommonModule,
-    OverviewRoutingModule
-  ]
+  imports: [CommonModule, OverviewRoutingModule],
 })
-export class OverviewModule { }
+export class OverviewModule {}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './core/user/guards';
-import {BaseLayoutComponent} from "./layout/base-layout/components/base-layout";
+import { BaseLayoutComponent } from './layout/base-layout/components/base-layout';
 
 const routes: Routes = [
   {
@@ -18,17 +18,23 @@ const routes: Routes = [
       {
         path: 'overview',
         loadChildren: () =>
-          import('./feature/overview/overview.module').then((m) => m.OverviewModule),
+          import('./feature/overview/overview.module').then(
+            (m) => m.OverviewModule,
+          ),
       },
       {
         path: 'analytics',
         loadChildren: () =>
-          import('./feature/analytics/analytics.module').then((m) => m.AnalyticsModule),
+          import('./feature/analytics/analytics.module').then(
+            (m) => m.AnalyticsModule,
+          ),
       },
       {
         path: 'history',
         loadChildren: () =>
-          import('./feature/history/history.module').then((m) => m.HistoryModule),
+          import('./feature/history/history.module').then(
+            (m) => m.HistoryModule,
+          ),
       },
       {
         path: 'order',
@@ -38,7 +44,9 @@ const routes: Routes = [
       {
         path: 'categories',
         loadChildren: () =>
-          import('./feature/categories/categories.module').then((m) => m.CategoriesModule),
+          import('./feature/categories/categories.module').then(
+            (m) => m.CategoriesModule,
+          ),
       },
     ],
   },

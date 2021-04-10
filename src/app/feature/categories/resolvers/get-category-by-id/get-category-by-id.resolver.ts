@@ -9,13 +9,14 @@ import { CategoriesCtrlService } from '../../../../backend-bridge/categories-ctr
 import { ICategory } from '../../../../shared/interfacces';
 
 @Injectable({ providedIn: 'root' })
-export class FetchCategoriesResolver implements Resolve<ICategory[]> {
+export class GetCategoryByIdResolver implements Resolve<ICategory[]> {
   constructor(private categoriesCtrl: CategoriesCtrlService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
   ): Observable<any> | Promise<any> | any {
-    return this.categoriesCtrl.fetchCategories();
+    const id = route.params.id;
+    return this.categoriesCtrl.getCategoryById(id);
   }
 }

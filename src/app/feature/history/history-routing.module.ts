@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HistoryComponent} from "./components/history";
-
+import { HistoryComponent } from './components/history';
 
 const routes: Routes = [
   {
     path: '',
     component: HistoryComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HistoryRoutingModule { }
+export class HistoryRoutingModule {}

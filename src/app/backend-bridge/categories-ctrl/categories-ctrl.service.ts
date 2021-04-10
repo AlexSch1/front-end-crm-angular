@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {ICategory, IMessage} from "../../shared/interfacces";
-import {Observable} from "rxjs";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { ICategory, IMessage } from '../../shared/interfacces';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoriesCtrlService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  public fetchCategories(showSpinner: boolean = false,): Observable<ICategory[]> {
-    const params = new HttpParams()
-      .set('showSpinner', `${showSpinner}`)
-    return this.http.get<ICategory[]>('/api/category',
-      {
-        params,
-      },)
+  public fetchCategories(
+    showSpinner: boolean = false,
+  ): Observable<ICategory[]> {
+    const params = new HttpParams().set('showSpinner', `${showSpinner}`);
+    return this.http.get<ICategory[]>('/api/category', {
+      params,
+    });
   }
 
   public getCategoryById(id: string): Observable<ICategory> {
-    return this.http.get<ICategory>(`/api/category/${id}`)
+    return this.http.get<ICategory>(`/api/category/${id}`);
   }
 
   public create(name: string, image?: File): Observable<ICategory> {

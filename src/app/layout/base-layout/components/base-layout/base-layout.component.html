@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container  w-100">
+<mat-sidenav-container class="sidenav-container w-100">
   <mat-sidenav
     class="sidenav-container__sidenav bg-dark"
     mode="side"
@@ -6,12 +6,14 @@
   >
     <div class="position-relative">
       <div class="pt-5 px-2 sidenav-container__sidenav-inner">
-            <a class="d-flex align-items-center pb-3 mb-3 text-white text-decoration-none border-bottom">CRM</a>
+        <a
+          class="d-flex align-items-center pb-3 mb-3 text-white text-decoration-none border-bottom"
+          >CRM</a
+        >
         <div class="flex-grow-1 flex-shrink-1">
           <app-sidenav-menu></app-sidenav-menu>
         </div>
-        <a  (click)="logout($event)" class="pb-4 text-white">Выйти</a>
-
+        <a (click)="logout($event)" class="pb-4 text-white">Выйти</a>
       </div>
     </div>
   </mat-sidenav>

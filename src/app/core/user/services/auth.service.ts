@@ -58,7 +58,6 @@ export class AuthService {
     );
   }
 
-
   public logOut() {
     // this.setUser(null);
     this.setToken(null);
@@ -105,5 +104,4 @@ export class AuthService {
     this.token$.next(token);
     // this.user$.next(token);
   }
-
 }

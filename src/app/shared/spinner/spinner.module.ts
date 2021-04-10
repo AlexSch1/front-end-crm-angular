@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { InterceptorSpinnerService } from './interceptors';
 import { SpinnerService } from './services';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [CommonModule, MatProgressSpinnerModule],

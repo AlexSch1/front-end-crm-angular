@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <p class="py-1 text-center">{{ data.message }}</p>
+</div>
+<div
+  mat-dialog-actions
+  *ngIf="data.confirm"
+  class="d-flex justify-content-center"
+>
+  <button mat-button [mat-dialog-close]="false">Нет</button>
+  <button mat-button [mat-dialog-close]="true">Да</button>
+</div>
