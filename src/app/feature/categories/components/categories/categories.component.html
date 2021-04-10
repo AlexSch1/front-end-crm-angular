@@ -1,20 +1,30 @@
 
 <div class="d-flex justify-content-end mb-3">
-  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="primary">Добавить катенорияю</button>
 </div>
-<table *ngIf="dataSource && dataSource.length" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<ng-container *ngIf="categories$ | async as categories; else loader">
 
-  <!-- Name Column -->
+<table *ngIf="categories && categories.length"  mat-table [dataSource]="categories" class="mat-elevation-z8">
+
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element">
+      <a [routerLink]="['/categories', element._id]">{{element.name}}</a>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-  <div class="w-100 p-4" *ngIf="dataSource &&
-          !dataSource.length">
+  <div class="w-100 p-4" *ngIf="categories && !categories.length">
     <div class="d-flex justify-content-center">Список пуст</div>
   </div>
+</ng-container>
+
+
+<ng-template #loader>
+  <div class="d-flex justify-content-center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

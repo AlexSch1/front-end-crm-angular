@@ -5,6 +5,7 @@ import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesComponent } from './components/categories/categories.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
     CommonModule,
     MatTableModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     CategoriesRoutingModule
   ]
 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {ICategory, IMessage} from "../../shared/interfacces";
 import {Observable} from "rxjs";
 
@@ -10,8 +10,13 @@ export class CategoriesCtrlService {
 
   constructor(private http: HttpClient) { }
 
-  public fetchCategories(): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>('/api/category')
+  public fetchCategories(showSpinner: boolean = false,): Observable<ICategory[]> {
+    const params = new HttpParams()
+      .set('showSpinner', `${showSpinner}`)
+    return this.http.get<ICategory[]>('/api/category',
+      {
+        params,
+      },)
   }
 
   public getCategoryById(id: string): Observable<ICategory> {
