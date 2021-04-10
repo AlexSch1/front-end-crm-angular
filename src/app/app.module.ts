@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './feature/auth/auth.module';
 import { TokenInterceptor } from './core/http-interceptors';
 import {BaseLayoutModule} from "./layout/base-layout/base-layout.module";
+import {SpinnerModule} from "./shared/spinner";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import {BaseLayoutModule} from "./layout/base-layout/base-layout.module";
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
+    SpinnerModule,
     BaseLayoutModule,
     BrowserAnimationsModule,
   ],

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {ICategory} from "../../../../shared/interfacces";
 
 @Component({
   selector: 'app-categories',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+  public displayedColumns: string[] = ['name'];
+  public dataSource: ICategory[] = [];
+  constructor(private route: ActivatedRoute) {
+    this.dataSource = route.snapshot.data.categories || [];
+  }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
 }

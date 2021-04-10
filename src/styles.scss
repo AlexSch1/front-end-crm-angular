@@ -1,3 +1,4 @@
+@import '~@angular/material/button/button-theme';
 @import './styles/utils';
 @import './styles/material';
 @import './styles/bootstrap';
@@ -24,4 +25,10 @@ a {
   &:focus {
     text-decoration: none;
   }
+}
+table {
+  width: 100%;
+}
+td, th {
+  vertical-align: middle;
 }

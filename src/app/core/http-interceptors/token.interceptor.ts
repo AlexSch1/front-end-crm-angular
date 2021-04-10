@@ -28,7 +28,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const token = this.cookieService.get('token');
 
     if (token && !req.url.endsWith('login')) {
-      nextHeaders = nextHeaders.append('token', token);
+      nextHeaders = nextHeaders.append('Authorization', token);
     }
 
     const nextReq = req.clone({
