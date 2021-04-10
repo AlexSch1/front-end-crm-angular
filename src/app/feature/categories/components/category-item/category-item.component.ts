@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICategory } from '../../../../shared/interfacces';
+import {ICategory, IPosition} from '../../../../shared/interfacces';
 import { Observable, Subject } from 'rxjs';
 import { CategoriesCtrlService } from '../../../../backend-bridge/categories-ctrl/categories-ctrl.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,7 +21,7 @@ export class CategoryItemComponent implements OnInit {
   public imagePreview: ArrayBuffer | string = '';
   public category: ICategory;
   public destroy$: Subject<boolean> = new Subject<boolean>();
-
+  public positions: IPosition[] = [];
   @ViewChild('inpFile') public inpFileRef: ElementRef;
 
   constructor(
@@ -39,6 +39,10 @@ export class CategoryItemComponent implements OnInit {
         this.isNew = false;
         this.fillForm(data.categoryItem);
       }
+      if (data.positionsList) {
+        this.positions = data.positionsList;
+      }
+
     });
   }
 
@@ -79,7 +83,7 @@ export class CategoryItemComponent implements OnInit {
         }
         this.categoriesService.delete(this.category._id).subscribe(
           (res) => {
-            this.openSnackBar(res.message, 'X');
+            this.openSnackBar('Категория удалена', 'X');
           },
           (error) => {
             this.openSnackBar(error.error.message, 'X');

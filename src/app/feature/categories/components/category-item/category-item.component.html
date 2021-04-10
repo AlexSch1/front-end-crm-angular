@@ -65,7 +65,8 @@
   </div>
 </div>
 
-<!--<app-positions-form-->
-<!--  *ngIf="category?._id"-->
-<!--  [categoryId]="category._id"-->
-<!--&gt;</app-positions-form>-->
+<app-positions-list
+  *ngIf="category?._id"
+  [positions]="positions"
+  [categoryId]="category._id"
+></app-positions-list>

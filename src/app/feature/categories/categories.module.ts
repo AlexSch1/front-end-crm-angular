@@ -12,9 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ModalModule } from '../../shared/modal/modal.module';
+import { PositionsListComponent } from './components/positions-list/positions-list.component';
+import { PositionFormComponent } from './components/position-form/position-form.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [CategoriesComponent, CategoryItemComponent],
+  declarations: [CategoriesComponent, CategoryItemComponent, PositionsListComponent, PositionFormComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -24,6 +27,7 @@ import { ModalModule } from '../../shared/modal/modal.module';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatDialogModule,
     MatInputModule,
     CategoriesRoutingModule,
   ],

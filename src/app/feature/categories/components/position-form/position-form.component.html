@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="">
+      <h4 class="mb-1">Добавить позицию</h4>
+
+
+      <mat-form-field class="col">
+        <mat-label>Название</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          autocomplete="off"
+          type="text"
+        />
+        <mat-error>
+            <span *ngIf="form.get('email')?.errors?.required">
+              Поле обязательное для заполнения
+            </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col">
+        <mat-label>Цена</mat-label>
+        <input
+          matInput
+          formControlName="cost"
+          autocomplete="off"
+          type="number"
+        />
+        <mat-error>
+            <span *ngIf="form.get('cost')?.errors?.required">
+              Поле обязательное для заполнения
+            </span>
+        </mat-error>
+      </mat-form-field>
+
+
+
+    <div >
+      <button type="button" mat-button [disabled]="form.disabled"  (click)="close()"
+      >Отмена</button>
+
+      <button mat-button          type="submit"
+               [disabled]="form.invalid || form.disabled"
+      >Сохранить</button>
+
+    </div>
+  </div>
+</form>
