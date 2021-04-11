@@ -1,14 +1,14 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {IPosition} from "../../../../shared/interfacces";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {PositionsCtrlService} from "../../../../backend-bridge/positions-ctrl/positions-ctrl.service";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IPosition } from '../../../../shared/interfacces';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { PositionsCtrlService } from '../../../../backend-bridge/positions-ctrl/positions-ctrl.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-position-form',
   templateUrl: './position-form.component.html',
-  styleUrls: ['./position-form.component.scss']
+  styleUrls: ['./position-form.component.scss'],
 })
 export class PositionFormComponent implements OnInit {
   public categoryId: string;
@@ -20,9 +20,8 @@ export class PositionFormComponent implements OnInit {
     private fb: FormBuilder,
     private positionsService: PositionsCtrlService,
 
-              private _snackBar: MatSnackBar) {
-    console.log(this)
-  }
+    private _snackBar: MatSnackBar,
+  ) {}
 
   public onSubmit() {
     this.form.disable();
@@ -31,18 +30,18 @@ export class PositionFormComponent implements OnInit {
       name: this.form.value.name,
       cost: this.form.value.cost,
       category: this.categoryId,
-    }
+    };
 
     const completed = () => {
       this.form.enable();
       this.form.reset();
-    }
+    };
 
     if (this.positionId) {
       newPosition._id = this.positionId;
       this.positionsService.update(newPosition).subscribe(
         (position: IPosition) => {
-          console.log('position0', position)
+          console.log('position0', position);
           this.close(position);
           this.openSnackBar('Позиция обновлена', 'X');
         },
@@ -50,8 +49,8 @@ export class PositionFormComponent implements OnInit {
           this.openSnackBar(error.error.message, 'X');
           this.form.enable();
         },
-        completed
-      )
+        completed,
+      );
     } else {
       this.positionsService.create(newPosition).subscribe(
         (position: IPosition) => {
@@ -62,15 +61,15 @@ export class PositionFormComponent implements OnInit {
           this.openSnackBar(error.error.message, 'X');
           this.form.enable();
         },
-        completed
-      )
+        completed,
+      );
     }
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       name: [null, Validators.required],
-      cost: [null, [Validators.required, Validators.min(1)]]
+      cost: [null, [Validators.required, Validators.min(1)]],
     });
 
     if (this.data.categoryId) {
@@ -84,11 +83,9 @@ export class PositionFormComponent implements OnInit {
         cost: this.data.position.cost,
       });
     }
-
   }
 
   public close(position?: IPosition): void {
-    console.log('d', position)
     this.dialogRef.close(position);
   }
 
@@ -99,5 +96,4 @@ export class PositionFormComponent implements OnInit {
       verticalPosition: 'top',
     });
   }
-
 }

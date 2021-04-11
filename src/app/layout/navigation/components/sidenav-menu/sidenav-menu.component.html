@@ -1,6 +1,7 @@
 <ul class="nav nav-pills flex-column mb-auto">
   <li class="nav-item" *ngFor="let link of links">
     <a
+      matRipple
       [routerLink]="[link.url]"
       routerLinkActive="active"
       class="nav-link text-white"

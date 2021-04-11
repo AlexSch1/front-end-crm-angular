@@ -14,10 +14,15 @@ import { MatInputModule } from '@angular/material/input';
 import { ModalModule } from '../../shared/modal/modal.module';
 import { PositionsListComponent } from './components/positions-list/positions-list.component';
 import { PositionFormComponent } from './components/position-form/position-form.component';
-import {MatDialogModule} from "@angular/material/dialog";
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [CategoriesComponent, CategoryItemComponent, PositionsListComponent, PositionFormComponent],
+  declarations: [
+    CategoriesComponent,
+    CategoryItemComponent,
+    PositionsListComponent,
+    PositionFormComponent,
+  ],
   imports: [
     CommonModule,
     MatTableModule,

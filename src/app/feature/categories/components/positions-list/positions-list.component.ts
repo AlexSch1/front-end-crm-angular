@@ -1,23 +1,27 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {IPosition} from "../../../../shared/interfacces";
-import {PositionFormComponent} from "../position-form/position-form.component";
-import {MatDialog} from "@angular/material/dialog";
-import {ModalComponent} from "../../../../shared/modal/components/modal";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {PositionsCtrlService} from "../../../../backend-bridge/positions-ctrl/positions-ctrl.service";
-import {take} from "rxjs/operators";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IPosition } from '../../../../shared/interfacces';
+import { PositionFormComponent } from '../position-form/position-form.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../../../shared/modal/components/modal';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { PositionsCtrlService } from '../../../../backend-bridge/positions-ctrl/positions-ctrl.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-positions-list',
   templateUrl: './positions-list.component.html',
-  styleUrls: ['./positions-list.component.scss']
+  styleUrls: ['./positions-list.component.scss'],
 })
 export class PositionsListComponent implements OnInit {
   @Input('categoryId') public categoryId: string;
   @Input('positions') public positions: IPosition[];
   public displayedColumns: string[] = ['name', 'cost', 'actions'];
-  constructor(public dialog: MatDialog, private _snackBar: MatSnackBar, private positionsService: PositionsCtrlService) { }
+  constructor(
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    private positionsService: PositionsCtrlService,
+  ) {}
 
   public ngOnInit(): void {}
   public onAddPosition(): void {
@@ -32,23 +36,26 @@ export class PositionsListComponent implements OnInit {
       data: {
         categoryId: this.categoryId,
         positionId: position ? position._id : null,
-        position: position,
+        position,
       },
     });
 
-    dialogRef.afterClosed().pipe(take(1)).subscribe(newPosition => {
-      if (!position && newPosition) {
-        this.positions = [...this.positions, newPosition.positions]
-      }
-      if (position && newPosition) {
-        this.positions = this.positions.map((item) => {
-          if (item._id === newPosition._id) {
-            return newPosition;
-          }
-          return  item
-        })
-      }
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((newPosition) => {
+        if (!position && newPosition) {
+          this.positions = [...this.positions, newPosition.positions];
+        }
+        if (position && newPosition) {
+          this.positions = this.positions.map((item) => {
+            if (item._id === newPosition._id) {
+              return newPosition;
+            }
+            return item;
+          });
+        }
+      });
   }
 
   public onSelectPosition(position: IPosition): void {
@@ -58,14 +65,16 @@ export class PositionsListComponent implements OnInit {
   public onDelete(eo: Event, position: IPosition) {
     eo.stopPropagation();
 
-      this.positionsService.delete(position).subscribe(
-        (res) => {
-          this.positions = this.positions.filter((item) => item._id !== position._id);
-          this.openSnackBar(res.message, 'X');
-        },
-        (err) => this.openSnackBar(err.error.message, 'X'),
-        () => {},
-      )
+    this.positionsService.delete(position).subscribe(
+      (res) => {
+        this.positions = this.positions.filter(
+          (item) => item._id !== position._id,
+        );
+        this.openSnackBar(res.message, 'X');
+      },
+      (err) => this.openSnackBar(err.error.message, 'X'),
+      () => {},
+    );
   }
 
   public openSnackBar(message: string, action: string) {
@@ -75,5 +84,4 @@ export class PositionsListComponent implements OnInit {
       verticalPosition: 'top',
     });
   }
-
 }

@@ -13,8 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnDestroy, OnInit {
   public formGroup: FormGroup = this.fb.group({
-    email: [null, [Validators.required, Validators.email]],
-    password: [null, [Validators.required, Validators.minLength(4)]],
+    email: ['alex@mail.com', [Validators.required, Validators.email]],
+    password: ['qwer', [Validators.required, Validators.minLength(4)]],
   });
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(

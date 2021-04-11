@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {ICategory, IMessage, IPosition} from '../../shared/interfacces';
+import { ICategory, IMessage, IPosition } from '../../shared/interfacces';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,11 +13,14 @@ export class PositionsCtrlService {
   }
 
   public create(position: IPosition): Observable<IPosition> {
-    return this.http.post<IPosition>(`/api/position`, position);
+    return this.http.post<IPosition>('/api/position', position);
   }
 
   public update(position: IPosition): Observable<IPosition> {
-    return this.http.patch<IPosition>(`/api/position/${position._id}`, position);
+    return this.http.patch<IPosition>(
+      `/api/position/${position._id}`,
+      position,
+    );
   }
 
   public delete(position: IPosition): Observable<IMessage> {

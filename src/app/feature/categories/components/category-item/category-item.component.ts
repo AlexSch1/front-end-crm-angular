@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ICategory, IPosition} from '../../../../shared/interfacces';
+import { ICategory, IPosition } from '../../../../shared/interfacces';
 import { Observable, Subject } from 'rxjs';
 import { CategoriesCtrlService } from '../../../../backend-bridge/categories-ctrl/categories-ctrl.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -42,7 +42,6 @@ export class CategoryItemComponent implements OnInit {
       if (data.positionsList) {
         this.positions = data.positionsList;
       }
-
     });
   }
 
