@@ -1,0 +1,15 @@
+.light-blue {
+  background-color: #4fc3f7 !important;
+}
+
+.orange {
+  background-color: #ffb74d !important;
+}
+
+.overview-card {
+  &__value {
+    font-size: 2.3rem;
+    line-height: 110%;
+    font-weight: normal;
+  }
+}

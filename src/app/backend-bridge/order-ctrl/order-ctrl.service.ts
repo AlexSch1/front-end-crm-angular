@@ -14,10 +14,12 @@ export class OrderCtrlService {
   }
 
   public fetch(params: any = {}): Observable<IOrder[]> {
+    const httpParams = new HttpParams({
+      fromObject: params,
+    }).set('showSpinner', `${false}`);
+
     return this.http.get<IOrder[]>('/api/order', {
-      params: new HttpParams({
-        fromObject: params,
-      }),
+      params: httpParams,
     });
   }
 }

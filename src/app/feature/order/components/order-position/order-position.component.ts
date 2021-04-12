@@ -8,7 +8,6 @@ import { OrderService } from '../../services/order.service';
   selector: 'app-order-position',
   templateUrl: './order-position.component.html',
   styleUrls: ['./order-position.component.scss'],
-  providers: [OrderService],
 })
 export class OrderPositionComponent implements OnInit {
   public positions: IPosition[] = null;

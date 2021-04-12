@@ -2,11 +2,11 @@
   <h4>Аналитика</h4>
 </div>
 
-<div
-  [style.display]="pending ? 'none' : 'block'"
->
+<div [style.display]="!analytics ? 'none' : 'block'">
   <div class="average-price">
-    <p>Средний чек <strong>{{average}} р.</strong></p>
+    <p>
+      Средний чек <strong>{{ average }} р.</strong>
+    </p>
   </div>
 
   <div class="analytics-block pb3">
@@ -18,12 +18,4 @@
     <h5>Заказы</h5>
     <canvas #order></canvas>
   </div>
-
 </div>
-
-
-<ng-template *ngIf="pending">
-  <div class="d-flex justify-content-center">
-    <mat-spinner></mat-spinner>
-  </div>
-</ng-template>

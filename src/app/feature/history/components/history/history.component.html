@@ -1,1 +1,52 @@
-<p>history works!</p>
+<div class="page-title">
+  <h4>История заказов</h4>
+  <div class="d-flex justify-content-end mb-2">
+    <button
+      type="button"
+      mat-button
+      (click)="isFilterVisible = !isFilterVisible"
+    >
+      <mat-icon [color]="getFilterIconColor()" class="icon" aria-hidden="false"
+        >filter_list</mat-icon
+      >
+    </button>
+  </div>
+</div>
+
+<app-history-filter
+  *ngIf="isFilterVisible"
+  (onFilter)="applyFilter($event)"
+></app-history-filter>
+
+<div *ngIf="!reloading; else reloadingBlock">
+  <div *ngIf="orders.length; else empty">
+    <app-history-list [orders]="orders"></app-history-list>
+
+    <div *ngIf="!noMoreOrders" class="my-3 text-center">
+      <button
+        (click)="loadMore()"
+        *ngIf="!loadingMore; else loaderMore"
+        mat-raised-button
+        color="primary"
+        type="button"
+      >
+        Загрузить еще
+      </button>
+      <ng-template #loaderMore>
+        <div class="d-flex justify-content-center">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <div class="center">Пусто</div>
+  </ng-template>
+</div>
+
+<ng-template #reloadingBlock>
+  <div class="d-flex justify-content-center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

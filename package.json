@@ -33,6 +33,7 @@
     "@angular/platform-browser-dynamic": "~9.0.5",
     "@angular/router": "~9.0.5",
     "bootstrap": "^4.6.0",
+    "chart.js": "^2.9.4",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jasmine": "^4.1.2",
     "eslint-plugin-jsdoc": "^32.3.0",

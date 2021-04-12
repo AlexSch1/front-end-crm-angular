@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {IAnalyticsPage, ICategory, IMessage, IOverviewPage, IPosition} from '../../shared/interfacces';
+import {
+  IAnalyticsPage,
+  ICategory,
+  IMessage,
+  IOverviewPage,
+  IPosition,
+} from '../../shared/interfacces';
 import { Observable } from 'rxjs';
 
 @Injectable({

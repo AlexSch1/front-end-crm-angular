@@ -1,0 +1,62 @@
+<div class="filter">
+  <div class="d-flex">
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label>Номер заказа</mat-label>
+        <input
+          matInput
+          [formControl]="form.get('order')"
+          autocomplete="off"
+          type="text"
+          min="1"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label>Начало</mat-label>
+        <input
+          [formControl]="form.get('start')"
+          name="start"
+          matInput
+          [matDatepicker]="pickerStart"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerStart"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerStart></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label>Конец</mat-label>
+        <input
+          name="end"
+          [formControl]="form.get('end')"
+          matInput
+          [matDatepicker]="pickerEnd"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerEnd"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerEnd></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end mb-3">
+    <button
+      mat-raised-button
+      type="button"
+      color="primary"
+      (click)="submitFilter()"
+      [disabled]="form.invalid"
+    >
+      Применить фильтр
+    </button>
+  </div>
+</div>

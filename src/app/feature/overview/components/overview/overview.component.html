@@ -1,1 +1,77 @@
-<p>overview works!</p>
+<div class="page-title">
+  <h1 class="mb-4 font-weight-normal">
+    Обзор за вчера ({{ yesterday | date: 'dd.MM.yyyy' }})
+  </h1>
+</div>
+
+<div class="row" *ngIf="data$ | async as data; else loader">
+  <div class="col-12 col-md-6 d-flex">
+    <mat-card class="overview-card light-blue text-white w-100">
+      <mat-card-header class="">
+        <h2 class="font-weight-normal">Выручка:</h2>
+      </mat-card-header>
+
+      <mat-card-content>
+        <h3 class="overview-card__value my-4">
+          {{ data.gain.yesterday }} руб.
+        </h3>
+        <h3
+          class="d-flex align-items-center mb-3"
+          [ngClass]="{
+            'text-success': data.gain.isHigher,
+            'text-danger': !data.gain.isHigher
+          }"
+        >
+          <mat-icon class="icon mr-2" aria-hidden="false">{{
+            data.gain.isHigher ? 'arrow_upward' : 'arrow_downward'
+          }}</mat-icon>
+
+          {{ data.gain.percent }}%
+        </h3>
+        <p>
+          Выручка вашего бизнеса вчера на {{ data.gain.percent }}%
+          {{ data.gain.isHigher ? 'выше' : 'ниже' }}
+          среднего: {{ data.gain.compare }} руб. в день
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12 col-md-6 d-flex">
+    <mat-card class="overview-card orange text-white w-100">
+      <mat-card-header class="">
+        <h2 class="font-weight-normal">Заказы:</h2>
+      </mat-card-header>
+
+      <mat-card-content>
+        <h3 class="overview-card__value my-4">
+          {{ data.orders.yesterday }} зак.
+        </h3>
+        <h3
+          class="d-flex align-items-center mb-3"
+          [ngClass]="{
+            'text-success': data.orders.isHigher,
+            'text-danger': !data.orders.isHigher
+          }"
+        >
+          <mat-icon class="icon mr-2" aria-hidden="false">
+            {{ data.orders.isHigher ? 'arrow_upward' : 'arrow_downward' }}
+          </mat-icon>
+
+          {{ data.orders.percent }}%
+        </h3>
+        <p>
+          Число заказов вчера на {{ data.orders.percent }}%
+          {{ data.orders.isHigher ? 'выше' : 'ниже' }}
+          среднего значения: {{ data.orders.compare }} зак. в день
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="d-flex justify-content-center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
